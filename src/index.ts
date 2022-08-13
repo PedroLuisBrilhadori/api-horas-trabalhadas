@@ -4,7 +4,7 @@ import { app } from "./app";
 import StringColors from "@utils/string-colors";
 
 dotenv.config({
-  path: process.env.NODE_ENV === "production" ? "/.env" : "dev.env",
+  path: process.env.NODE_ENV === "production" ? "/configs/.env" : "/configs/dev.env",
 });
 
 const start = () => {
