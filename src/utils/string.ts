@@ -9,4 +9,8 @@ enum StringColors {
   null = "\x1b[0m",
 }
 
-export default StringColors;
+const StringUtils = {
+  app: `${StringColors.green}[APP]${StringColors.null} `,
+};
+
+export { StringColors, StringUtils };
