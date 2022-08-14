@@ -13,7 +13,7 @@ class UserController {
     const user = repository.create({ name, email, password });
     await repository.save(user);
 
-    user.password = null;
+    user.password = undefined;
 
     return user;
   }

@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { Request, Response } from "express";
 import userController from "./user.controller";
 
@@ -6,10 +7,11 @@ class UserHandler {
     const { name, email, password } = req.body;
 
     try {
-      const user = await userController.create({ name, email, password });
+      const password_hash = await hash(password, 10);
+      const user = await userController.create({ name, email, password: password_hash });
       res.status(201).json({ success: true, user });
     } catch (error) {
-      res.send(400).json({ success: false, error });
+      console.error(error);
     }
   }
 }
