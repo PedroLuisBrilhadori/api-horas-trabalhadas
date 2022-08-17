@@ -2,13 +2,13 @@
   "name": "horas-trabalhadas-api",
   "version": "1.0.0",
   "description": "api para o aplicativo de horas-trabalhadas",
-  "main": "index.js",
+  "main": "./src/main.js",
   "author": "PedroLuisBrilhadori",
   "license": "MIT",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn src/index.ts",
+    "start": "node dist/main.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn src/main.ts",
     "lint": "eslint . --ext .ts",
     "prepare": "husky install"
   },
