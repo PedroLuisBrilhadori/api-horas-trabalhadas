@@ -1,5 +1,11 @@
 import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
 
+export type CreateUser = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 @Entity("User")
 class User {
   @ObjectIdColumn()

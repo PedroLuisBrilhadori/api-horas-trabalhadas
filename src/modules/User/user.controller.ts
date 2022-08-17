@@ -1,11 +1,5 @@
 import { Repository } from "typeorm";
-import User from "./user.model";
-
-type CreateUser = {
-  name: string;
-  email: string;
-  password: string;
-};
+import User, { CreateUser } from "./user.model";
 
 class UserController {
   constructor(private repository: Repository<User>) {}
