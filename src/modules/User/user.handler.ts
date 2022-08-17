@@ -1,14 +1,15 @@
-import { hash } from "bcrypt";
 import { Request, Response } from "express";
-import userController from "./user.controller";
+import UserController from "./user.controller";
 
 class UserHandler {
+  constructor(private controller: UserController, private hash: (pass: string | Buffer, salt: string | number) => Promise<string>) {}
+
   async create(req: Request, res: Response) {
     const { name, email, password } = req.body;
 
     try {
-      const password_hash = await hash(password, 10);
-      const user = await userController.create({ name, email, password: password_hash });
+      const password_hash = await this.hash(password, 10);
+      const user = await this.controller.create({ name, email, password: password_hash });
       res.status(201).json({ success: true, user });
     } catch (error) {
       console.error(error);
@@ -16,4 +17,4 @@ class UserHandler {
   }
 }
 
-export default new UserHandler();
+export default UserHandler;

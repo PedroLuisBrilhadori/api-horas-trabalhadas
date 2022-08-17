@@ -6,6 +6,7 @@ import Record from "@modules/Record/record.model";
 dotenv.config();
 
 const AppDataSource = new DataSource({
+  name: "default",
   type: "mongodb",
   url: process.env.DB_URL,
   port: 27017,
