@@ -1,4 +1,4 @@
-import { UserRepository } from "src/repositores";
+import { Repository } from "typeorm";
 import User from "./user.model";
 
 type CreateUser = {
@@ -8,10 +8,11 @@ type CreateUser = {
 };
 
 class UserController {
+  constructor(private repository: Repository<User>) {}
+
   async create({ name, email, password }: CreateUser): Promise<User> {
-    const repository = await UserRepository();
-    const user = repository.create({ name, email, password });
-    await repository.save(user);
+    const user = this.repository.create({ name, email, password });
+    await this.repository.save(user);
 
     user.password = undefined;
 
@@ -19,4 +20,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default UserController;
