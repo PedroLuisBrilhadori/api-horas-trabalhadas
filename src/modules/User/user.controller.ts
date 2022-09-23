@@ -8,8 +8,6 @@ class UserController {
     const user = this.repository.create({ name, email, password });
     await this.repository.save(user);
 
-    user.password = undefined;
-
     return user;
   }
 }

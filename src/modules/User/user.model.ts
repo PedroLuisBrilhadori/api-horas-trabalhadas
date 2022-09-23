@@ -1,4 +1,5 @@
 import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
+import Record from "@modules/Record/record.model";
 
 export type CreateUser = {
   name: string;
@@ -11,13 +12,19 @@ class User {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   name: string;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   email: string;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   password: string;
 }
 

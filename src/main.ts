@@ -12,6 +12,9 @@ dotenv.config();
 export const start = async () => {
   try {
     await AppDataSource.initialize();
+    console.log(`${StringUtils.app} | Banco de dados iniciado!`);
+
+    await AppDataSource.synchronize();
     console.log(`${StringUtils.app} | Banco de dados sincronizado!`);
 
     const app = App().app;

@@ -1,22 +1,27 @@
 import User from "@modules/User/user.model";
-import { Column, Entity, JoinTable, ManyToOne, ObjectID, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
 
 @Entity("Record")
 class Record {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   start: Date;
 
   @Column()
-  end: Date;
+  end?: Date;
 
-  @ManyToOne(() => User)
-  @JoinTable({
-    name: "User",
-    joinColumns: [{ name: "name" }],
-    inverseJoinColumns: [{ name: "start" }, { name: "end" }],
+  @Column({
+    default: () => true,
+    nullable: false,
+  })
+  working: boolean;
+
+  @Column({
+    nullable: false,
   })
   user: User;
 }
